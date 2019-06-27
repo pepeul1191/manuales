@@ -71,9 +71,7 @@ Asignamos un nombre de proyecto y Group.Id (pe.edu.ulima)
 
 Una vez creado el proyecto creamos los paquetes <b>pe.edu.ulima.beans</b>, <b>pe.edu.ulima.configs</b>, <b>pe.edu.ulima.daos</b> y <b>pe.edu.ulima.test</b>. En los pasos siguientes iremos creando clases java en los distintos paquetes creados.
 
-<p align="center">
-    ![img07](resources/img07.png)
-</p>
+![img07](resources/img07.png)
 
 ### Agregar dependencias
 
