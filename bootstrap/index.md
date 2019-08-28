@@ -6,6 +6,7 @@
   - [Importar Librería](#importar-librer%c3%ada)
   - [Menú de Navegación](#men%c3%ba-de-navegaci%c3%b3n)
   - [Footer](#footer)
+  - [Sistema de Grillas](#sistema-de-grillas)
 
 ## Introducción
 
@@ -100,6 +101,7 @@ Nótece las clases que se están usando en el código, por ejemplo la clase 'con
 
 ![img03](resources/img03.png)
 
+*Imagen 3: Menú de navegación*
 
 ## Footer
 
@@ -117,10 +119,92 @@ Deberíamos tener la vista mostrada en la Imagen 4.
 
 ![img04](resources/img04.png)
 
+*Imagen 4: Footer del sitio*
+
+## Sistema de Grillas
+
+Boostrap usa un sistema de grillas para dividir verticalmente una fila (ver Imagen 5) que están identificadas con la clase 'row'. Vamos ahora dos maneras para usar el sistema de grillas, división automática y asignación manual.
+
+![img05](resources/img05.jpg)
+
+*Imagen 5: Sistema de grillas*
+
+Para el contenido a usar en los ejemplos del sistema de grillas vamos a usar el siguiente contenido html:
+
+```html
+<div class="col-sm">
+    <div class="card" >
+        <img class="card-img-top" src="img/img_avatar1.png" alt="Card image" style="width:100%">
+        <div class="card-body">
+            <h4 class="card-title">John Doe</h4>
+            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+            <a href="#" class="btn btn-primary">See Profile</a>
+        </div>
+    </div>
+</div>
+```
+
+En el código mostrado se usa una imagen, la cuál se descargará del [link](https://www.w3schools.com/bootstrap4/img_avatar1.png). Una vez descargada la imagen, crearemos en la raiz de nuestro proyecto una carpeta llamada 'img', dentro de la que se colocará la imagen descargada (ver Imagen 6). Nótece que el nombre de la imagen descargada deberá ser nombrada en el directorio como 'img_avatar1.png'.
+
+![img06](resources/img06.png)
+
+*Imagen 6: Carpeta de imágenes*
+
+1. División Automáctica
+
+En la asignación automática será usando la clase 'col-sm' dentro los 'div.row'. El uso de esta clase hará que se divida el ancho de la fila de manera proporcional a la cantidad de 'col-sm' presentes, aceptando un máximo de 12 subdivisiones por fila. El código mostrado a continuación generará la imagen mostrada en la Imagen 7. 
+
+```html
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+		</div>
+		<div class="col-sm">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+        </div>
+        <div class="col-sm">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+        </div>
+        <div class="col-sm">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+		</div>
+	</div>
+</div>
+```
+
+![img07](resources/img07.png)
+
+*Imagen 7: División automática de columnas*
+
+2. Asignación Manual
+
+En la asignación maual será usando la clase 'col-md-1', 'col-md-2', 'col-md-3', 'col-md-4', 'col-md-5', 'col-md-6', 'col-md-7', 'col-md-8', 'col-md-9', 'col-md-10' y 'col-md-12' dentro los 'div.row'. El uso de esta clase hará que se divida el ancho de la fila de manera proporcional al número usado al final de cada una de las clases 'col-md'. Hay que tener en cuenta que la suma de dichos número no supere el doce. El código mostrado a continuación generará la imagen mostrada en la Imagen 8.
+
+```html
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+		</div>
+		<div class="col-md-6">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+        </div>
+        <div class="col-md-4">
+		  	<!-- contenido a usar en los ejemplos del sistema de grillas -->
+		</div>
+	</div>
+</div>
+```
+
+![img08](resources/img08.png)
+
+*Imagen 8: División manual de columnas*
+
 ---
 
 Fuentes
 
 [1] https://getbootstrap.com/docs/4.3/getting-started/introduction/ <br>
-[2] https://getbootstrap.com/docs/4.3/getting-started/download/
+[2] https://getbootstrap.com/docs/4.3/getting-started/download/ <br>
 [3] https://github.com/pepeul1191/koa-access-admin
