@@ -1,12 +1,11 @@
-# Navegación con Bootstrap 4
+# Bootstrap 4
 
-- [Navegación con Bootstrap 4](#navegaci%c3%b3n-con-bootstrap-4)
-  - [Introducción](#introducci%c3%b3n)
-  - [Crear Proyecto](#crear-proyecto)
-  - [Importar Librería](#importar-librer%c3%ada)
-  - [Menú de Navegación](#men%c3%ba-de-navegaci%c3%b3n)
-  - [Footer](#footer)
-  - [Sistema de Grillas](#sistema-de-grillas)
+- [Introducción](#introducci%c3%b3n)
+- [Crear Proyecto](#crear-proyecto)
+- [Importar Librería](#importar-librer%c3%ada)
+- [Menú de Navegación](#men%c3%ba-de-navegaci%c3%b3n)
+- [Footer](#footer)
+- [Sistema de Grillas](#sistema-de-grillas)
 
 ## Introducción
 
@@ -150,7 +149,7 @@ En el código mostrado se usa una imagen, la cuál se descargará del [link](htt
 
 *Imagen 6: Carpeta de imágenes*
 
-1. División Automáctica
+1. División Automática
 
 En la asignación automática será usando la clase 'col-sm' dentro los 'div.row'. El uso de esta clase hará que se divida el ancho de la fila de manera proporcional a la cantidad de 'col-sm' presentes, aceptando un máximo de 12 subdivisiones por fila. El código mostrado a continuación generará la imagen mostrada en la Imagen 7. 
 
