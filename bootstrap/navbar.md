@@ -5,6 +5,7 @@
   - [Crear Proyecto](#crear-proyecto)
   - [Importar Librería](#importar-librer%c3%ada)
   - [Menú de Navegación](#men%c3%ba-de-navegaci%c3%b3n)
+  - [Footer](#footer)
 
 ## Introducción
 
@@ -98,6 +99,23 @@ Para crear un menú de navegación con bootstrap es con el siguiente código:
 Nótece las clases que se están usando en el código, por ejemplo la clase 'contanier' que hace que el contenido del 'div' se encuentre centrado en la pantalla dejando un margen a la izquierda y derecha (ver Imagen 3).
 
 ![img03](resources/img03.png)
+
+
+## Footer
+
+Para crear un footer para nuestra aplicación con bootstrap es con el siguiente código debajo el código del menú de navegación:
+
+```html
+<footer>
+    <div class="container">
+        <p>Powered by: <a href="http://softweb.pe/">Software Web Perú</a> © 2011-2018 </p>
+    </div>
+</footer>
+```
+
+Deberíamos tener la vista mostrada en la Imagen 4.
+
+![img04](resources/img04.png)
 
 ---
 
