@@ -91,6 +91,9 @@ Una vez grabado el archivo a editar, deberemos instalar la dependencia agregada:
 Para probar que la instalación ha sido exitosa, vamos a crear un archivo llamado 'app.py' en la raiz de la carpeta. Luego agreamos el siguiente código a dicho archivo:
 
 ```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import bottle
 
 app = bottle.app()
@@ -157,6 +160,54 @@ def send_static(filename):
     )
 ```
 
+
++ Habilitando el uso de sesiones.
+
+Deberemos añadir la siguiente dependencia en 'requirements.txt'
+
+```
+bottle-beaker
+```
+
+Luego debemos instalar la nueva dependencia:
+
+    $ pip install -r requirements.txt
+
+Una vez instalada la nueva dependencia, vamos a crear una carpeta llamada 'configs' en la raiz del proyecto. Dentro de dicha carpeta vamos a crear un archivo llamado 'session.py' con el siguiente código en su interior:
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+session_opionts = {
+  'session.type': 'file',
+  'session.cookie_expires': 6000,
+  'session.data_dir': './data',
+  'session.auto': True
+}
+```
+
+En el archivo 'app.py' vamos a tener que añadir la configuración del uso de sesiones, el código final de este archivo será el siguiente:
+
+
++ Habilitando el uso de sesiones.
+
+Deberemos añadir la siguiente dependencia en 'requirements.txt'
+
+```
+bottle-beaker
+```
+
+Luego debemos instalar la nueva dependencia:
+
+    $ pip install -r requirements.txt
+
+Una vez instalada la nueva dependencia, vamos a crear una carpeta llamada 'configs' en la raiz del proyecto. Dentro de dicha carpeta vamos a crear un archivo llamado 'session.py' con el siguiente código en su interior:
+
+
+
+
+
 ---
 
 Fuentes:
@@ -164,3 +215,4 @@ Fuentes:
 [1] https://github.com/pepeul1191/github-python <br>
 [2] https://medium.com/@m.monroyc22/configurar-entorno-virtual-python-a860e820aace <br>
 [3] https://bottlepy.org/docs/dev/ <br>
+[4] https://github.com/pepeul1191/python-accesos-v2 <br>
