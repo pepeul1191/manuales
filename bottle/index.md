@@ -5,6 +5,7 @@
   - [Crear Proyecto](#Crear-Proyecto)
   - [Crear ambiente virtual](#Crear-ambiente-virtual)
   - [Agregar dependencia de Python Bottle](#Agregar-dependencia-de-Python-Bottle)
+  - [Configurando Bottle](#Configurando-Bottle)
 
 ## Introducción
 
@@ -90,13 +91,21 @@ Una vez grabado el archivo a editar, deberemos instalar la dependencia agregada:
 Para probar que la instalación ha sido exitosa, vamos a crear un archivo llamado 'app.py' en la raiz de la carpeta. Luego agreamos el siguiente código a dicho archivo:
 
 ```python
-from bottle import route, run
+import bottle
 
-@route('/')
+app = bottle.app()
+
+@app.route('/', method='GET')
 def index():
     return 'Hola mundo!'
 
-run(host='localhost', port=3000)
+if __name__ == '__main__':
+    bottle.run(
+        app=app, 
+        host='localhost', 
+        port=3000, 
+        debug=True
+    )
 ```
 
 Para ejecutar la aplicación web usaremos el siguiente código:
@@ -116,6 +125,37 @@ El código usado es importante resaltar que la función "@route('/')" es la ruta
 Si entramos en un web browser podremos ver el siguiente resultado si colocamos la url 'http://localhost:3000/'
 
 ![img01](resources/img01.png)
+
+## Configurando Bottle
+
+Las configuraciones que vamos a realizar son las siguientes:
+
++ Autorecarga de inicio para la aplicación una vez se modifiquen los arhivos.
+
+En la sección de código dónde arracamos la aplicación, debemos agregar el atributo 'reloader=True'.
+
+```python
+bottle.run(
+    app = app, 
+    host='localhost', 
+    port=3000, 
+    debug=True, 
+    reloader=True
+)
+```
+
++ Carpeta de archivos estáticos.
+
+Primero vamos a crear un carpeta llamada 'static' en la raíz del proyecto. Esta carpeta contendrá los archivos estáticos del sitio web. Una vez creado los archivos se usará el siguiente código para indicarle a la aplicación web el uso que le daremos a esa carpeta, este código deberá estar debajo de '@app.route('/', method='GET')'
+
+```python
+@app.route('/:filename#.*#')
+def send_static(filename):
+    return bottle.static_file(
+        filename, 
+        root='./static/'
+    )
+```
 
 ---
 
