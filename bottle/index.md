@@ -7,6 +7,7 @@
   - [Agregar dependencia de Python Bottle](#agregar-dependencia-de-python-bottle)
   - [Configurando Bottle](#configurando-bottle)
   - [Agregando Middlewares](#agregando-middlewares)
+  - [Creando rutas en archivos](#creando-rutas-en-archivos)
 
 ## Introducción
 
@@ -83,6 +84,7 @@ En el archivo 'requirements.txt' agregamos la dependencia de Bottle editando el 
 
 ```
 bottle
+cherrypy
 ```
 
 Una vez grabado el archivo a editar, deberemos instalar la dependencia agregada:
@@ -108,7 +110,8 @@ if __name__ == '__main__':
         app=app, 
         host='localhost', 
         port=3000, 
-        debug=True
+        debug=True,
+        server='cherrypy'
     )
 ```
 
@@ -144,7 +147,8 @@ bottle.run(
     host='localhost', 
     port=3000, 
     debug=True, 
-    reloader=True
+    reloader=True,
+    server='cherrypy'
 )
 ```
 
@@ -207,11 +211,14 @@ Una vez instalada la nueva dependencia, vamos a crear una carpeta llamada 'confi
 
 ## Agregando Middlewares
 
-Los middlewares que vamos a agregar son 'headers', 'CORS' y validadores de sesión. Para esto vamos a crear en la carpeta 'configs' un archivo llamado 'middlewares.py' y vamos a agregar el siguiente contenido:
+Los middlewares que vamos a agregar son 'headers', 'logs', 'CORS' y validadores de sesión. Para esto vamos a crear en la carpeta 'configs' un archivo llamado 'middlewares.py' y vamos a agregar el siguiente contenido:
 
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+from bottle import request
+from functools import wraps
 ```
 
 En el archivo en mención vamos a agregar el siguiente código que usa 'decorators', que son funciones que toman y extendienden el comportamiento de otra función [5].
@@ -226,57 +233,44 @@ def headers(fn):
   return _headers
 ```
 
++ Logs
+
+```python
+def logs(fn):
+    @wraps(fn)
+    def _log_to_logger(*args, **kwargs):
+        actual_response = fn(*args, **kwargs)
+        print(
+            request.method
+            + ' -> '
+            + request.fullpath + ' '
+            + str(actual_response.status)
+        )
+        return actual_response
+    return _log_to_logger
+```
+
 + CORS
 
 ```python
-def enable_cors(fn):
-  def _enable_cors(*args, **kwargs):
-    # set CORS headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-    response.headers['Content-Type'] = 'text/html; charset=UTF-8'
-    if bottle.request.method != 'OPTIONS':
-      # actual request; reply with the actual response
-      return fn(*args, **kwargs)
-  return _enable_cors
+
 ```
 
 + Sesión activa requerida
 
 ```python
-def session_true(fn):
-  def _session_true(*args, **kwargs):
-    s = request.environ.get('beaker.session')
-    if s != None:
-      if s.has_key('status') == True:
-      if s['status'] == False:
-          return redirect("/error/access/505")
-      else:
-        return redirect("/error/access/505")
-    else:
-      return 'Hola mundo!'
-    return fn(*args, **kwargs)
-  return _session_true
+
 ```
 
 + Sesión activa no requerida
 
 ```python
-def session_false(fn):
-  def _session_false(*args, **kwargs):
-    #si la session es activaa, vamos a '/accesos/'
-    if constants['ambiente_session'] == 'activo':
-      s = request.environ.get('beaker.session')
-      if s != None:
-        if s.has_key('activo') == True:
-          if s['activo'] == True:
-            return redirect("/accesos/")
-      return fn(*args, **kwargs)
-    #else: contnuar
-    else:
-      return fn(*args, **kwargs)
-  return _session_false
+
 ```
+
+## Creando rutas en archivos
+
+En esta sección vamos a crear archivos python donde irá el la definición de la rutas. Es importante mencionar que en el archivo 'app.py' tenemos que registrar las rutas de los archivos a la aplicación que se está ejecutando.
 
 ---
 
@@ -287,3 +281,5 @@ Fuentes:
 [3] https://bottlepy.org/docs/dev/ <br>
 [4] https://github.com/pepeul1191/python-accesos-v2 <br>
 [5] https://realpython.com/primer-on-python-decorators/ <br>
+[6] https://github.com/pepeul1191/python-accesos-v2 <br>
+[7] https://github.com/pepeul1191/python-bottle-cherry-boilerplate<br>
