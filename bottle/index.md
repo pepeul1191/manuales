@@ -1,11 +1,12 @@
 # Python Bottle
 
-- [Python Bottle](#Python-Bottle)
-  - [Introducción](#Introducci%C3%B3n)
-  - [Crear Proyecto](#Crear-Proyecto)
-  - [Crear ambiente virtual](#Crear-ambiente-virtual)
-  - [Agregar dependencia de Python Bottle](#Agregar-dependencia-de-Python-Bottle)
-  - [Configurando Bottle](#Configurando-Bottle)
+- [Python Bottle](#python-bottle)
+  - [Introducción](#introducci%c3%b3n)
+  - [Crear Proyecto](#crear-proyecto)
+  - [Crear ambiente virtual](#crear-ambiente-virtual)
+  - [Agregar dependencia de Python Bottle](#agregar-dependencia-de-python-bottle)
+  - [Configurando Bottle](#configurando-bottle)
+  - [Agregando Middlewares](#agregando-middlewares)
 
 ## Introducción
 
@@ -204,9 +205,78 @@ Luego debemos instalar la nueva dependencia:
 
 Una vez instalada la nueva dependencia, vamos a crear una carpeta llamada 'configs' en la raiz del proyecto. Dentro de dicha carpeta vamos a crear un archivo llamado 'session.py' con el siguiente código en su interior:
 
+## Agregando Middlewares
 
+Los middlewares que vamos a agregar son 'headers', 'CORS' y validadores de sesión. Para esto vamos a crear en la carpeta 'configs' un archivo llamado 'middlewares.py' y vamos a agregar el siguiente contenido:
 
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+```
 
+En el archivo en mención vamos a agregar el siguiente código que usa 'decorators', que son funciones que toman y extendienden el comportamiento de otra función [5].
+
++ Headers
+
+```python
+def headers(fn):
+  def _headers(*args, **kwargs):
+    response.headers['Server'] = 'Ubuntu;WSGIServer/0.2;CPython/3.5.2'
+    return fn(*args, **kwargs)
+  return _headers
+```
+
++ CORS
+
+```python
+def enable_cors(fn):
+  def _enable_cors(*args, **kwargs):
+    # set CORS headers
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Content-Type'] = 'text/html; charset=UTF-8'
+    if bottle.request.method != 'OPTIONS':
+      # actual request; reply with the actual response
+      return fn(*args, **kwargs)
+  return _enable_cors
+```
+
++ Sesión activa requerida
+
+```python
+def session_true(fn):
+  def _session_true(*args, **kwargs):
+    s = request.environ.get('beaker.session')
+    if s != None:
+      if s.has_key('status') == True:
+      if s['status'] == False:
+          return redirect("/error/access/505")
+      else:
+        return redirect("/error/access/505")
+    else:
+      return 'Hola mundo!'
+    return fn(*args, **kwargs)
+  return _session_true
+```
+
++ Sesión activa no requerida
+
+```python
+def session_false(fn):
+  def _session_false(*args, **kwargs):
+    #si la session es activaa, vamos a '/accesos/'
+    if constants['ambiente_session'] == 'activo':
+      s = request.environ.get('beaker.session')
+      if s != None:
+        if s.has_key('activo') == True:
+          if s['activo'] == True:
+            return redirect("/accesos/")
+      return fn(*args, **kwargs)
+    #else: contnuar
+    else:
+      return fn(*args, **kwargs)
+  return _session_false
+```
 
 ---
 
@@ -216,3 +286,4 @@ Fuentes:
 [2] https://medium.com/@m.monroyc22/configurar-entorno-virtual-python-a860e820aace <br>
 [3] https://bottlepy.org/docs/dev/ <br>
 [4] https://github.com/pepeul1191/python-accesos-v2 <br>
+[5] https://realpython.com/primer-on-python-decorators/ <br>
