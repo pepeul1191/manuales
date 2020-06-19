@@ -1,4 +1,4 @@
-# Acceso a base de datos SQL desde Java
+# Acceso a aplicación de registro de parámetros de Teamviewer
 
 - [Introducción](#introducción)
 
