@@ -45,7 +45,7 @@ Nos aparacerá una ventana para crear una tabla, le damos cerrar.
 Para crear la tabla que vamos a usar en el ejercicio, hay que hacer lo siguiente (ver imagen):
 
 1) ir a la pestaña <b>Execute SQL</b>, <br>
-2) copiar el código que se encuentra en el archico </b>[demo.sql](demo.sql)</b>, <br>
+2) copiar el código que se encuentra en el archico </b>[demo.sql](https://raw.githubusercontent.com/pepeul1191/manuales/master/jdbc/resources/demo.sql)</b>, <br>
 3) ejecutar el script, <br>
 4) guardar cambios.
 
@@ -61,13 +61,17 @@ Los datos se podrán ver su respectiva tabla en la pestaña <b>Browse Data</b>.
 
 ### Crear proyecto
 
+<<<<<<< HEAD
 En Netbeans accedemos a <b>File/New Project</b> y seleccionamos  <b>Java Application</b>
+=======
+En Netbeans accedemos a <b>File/New Project</b> y seleccionamos Java / <b>Java Application</b>
+>>>>>>> ba2f349eeb095c9326d4ec6e5bb2275db130f771
 
-![img05](resources/img05.png)
+![img05](resources/sqlite3-jar/img05.png)
 
-Asignamos un nombre de proyecto y Group.Id (pe.edu.ulima)
+Asignamos un nombre de proyecto y removemos el check de crear la clase Main para el proyecto.
 
-![img06](resources/img06.png)
+![img06](resources/sqlite3-jar/img06.png) 
 
 Una vez creado el proyecto creamos los paquetes <b>pe.edu.ulima.beans</b>, <b>pe.edu.ulima.configs</b>, <b>pe.edu.ulima.daos</b> y <b>pe.edu.ulima.test</b>. En los pasos siguientes iremos creando clases java en los distintos paquetes creados.
 
@@ -75,17 +79,15 @@ Una vez creado el proyecto creamos los paquetes <b>pe.edu.ulima.beans</b>, <b>pe
 
 ### Agregar JAR
 
+<<<<<<< HEAD
 Descagar el siguiente JAR del siguiente [link](https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.32.3/sqlite-jdbc-3.32.3.jar). Luego agregaremos el jar
+=======
+Descagar el siguiente JAR del siguiente [link](https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.32.3/sqlite-jdbc-3.32.3.jar). El archivo descargado hay que ubicarlo en un carpeta llamada <b>jars</b> ubicada en la raiz del proyecto. 
+>>>>>>> ba2f349eeb095c9326d4ec6e5bb2275db130f771
 
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.xerial</groupId>
-        <artifactId>sqlite-jdbc</artifactId>
-        <version>3.28.0</version>
-    </dependency>
-</dependencies>
-```
+Luego agregamos el <b>jar</b> al proyecto.
+
+![img06](resources/sqlite3-jar/img06.1.png) 
 
 ### Crear connection
 
