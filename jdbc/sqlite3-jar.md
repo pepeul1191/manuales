@@ -59,9 +59,9 @@ Los datos se podrán ver su respectiva tabla en la pestaña <b>Browse Data</b>.
 
 ## Accediendo a la base de datos mediante Java JDBC
 
-### Crear proyecto maven
+### Crear proyecto
 
-En Netbeans accedemos a <b>File/New Project</b> y seleccionamos Maven / <b>Java Application</b>
+En Netbeans accedemos a <b>File/New Project</b> y seleccionamos  <b>Java Application</b>
 
 ![img05](resources/img05.png)
 
@@ -75,7 +75,7 @@ Una vez creado el proyecto creamos los paquetes <b>pe.edu.ulima.beans</b>, <b>pe
 
 ### Agregar JAR
 
-Descagar el siguiente JAR del siguiente [link](https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.32.3/sqlite-jdbc-3.32.3.jar) En la carpta <b>Project Files</b> hay un archivo llamado <b>pom.xml</b>. Editamos el archivo con el siguiente código.
+Descagar el siguiente JAR del siguiente [link](https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.32.3/sqlite-jdbc-3.32.3.jar). Luego agregaremos el jar
 
 ```xml
 <dependencies>
