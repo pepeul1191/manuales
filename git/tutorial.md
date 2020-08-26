@@ -7,6 +7,13 @@
     - [1. Descargar e instalar Git](#<b>1.-Descargar-e-instalar-Git</b>.)
     - [2. Descargar e instalar NodeJS](#<b>-2.-Descargar-e-instalar-Node-JS</b>)
     - [3. Descargar e instalar Visual Studio Code](#<b>3.-Descargar-e-instalar-Visual-Studio-Code</b>)
+
+- [Usar Github](#<b>Usar-Github</b>)
+
+    - [1. Crear una cuenta en Github](#<b>1.-Crear-una-cuenta-en-Github</b>)
+    - [2. Crear un nuevo repositorio](#<b>2-Crear-un-nuevo-repositorio</b>.)
+    - [3. Descargar proeycto de prueba](#<b>3-Descargar-proeycto-de-prueba</b>.)
+    - [4. Agregar Accesos de Usuarios al Repositorio](#<b>4-Agregar-Accesos-de-Usuarios-al-Repositorio</b>.)
     
 - [Fuentes](#fuentes)
     
@@ -162,8 +169,11 @@ Enviamos el repositorio local al remote (git push -u [nombre-remoto] [nombre-ram
 
     > git push -u origin master
 
-Al ejecutar el comando <b>push</b> nos 
+Si todo ha sido enviado correctamente, visualizaríamos el archivo README.md renderizado.
 
+![img05](src/04.5-github.png)
+
+### <b>4. Agregar Accesos de Usuarios al Repositorio</b>.
 
 ---
 
