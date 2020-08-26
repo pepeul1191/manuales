@@ -175,6 +175,11 @@ Si todo ha sido enviado correctamente, visualizaríamos el archivo README.md ren
 
 ### <b>4. Agregar Accesos de Usuarios al Repositorio</b>.
 
+Vamos a nuestro repositorio, primero a la sección <b>Settings</b> y luego a <b>Manage access</b>. Ahora presionamos el botón <b>Invite a collaborator</b> y buscamos a nuestros nuevos colaboradores para poder editar el repositorio.
+
+![img05](src/04.6-github.png)
+
+
 ---
 
     $ npm runs start
