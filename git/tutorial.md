@@ -2,7 +2,11 @@
 
 - [Introducción](#introducción)
 
-- [Pasos](#pasos)
+- [Configurar el Ambiente](#<b>Configurar-el-Ambiente</b>)
+
+    - [1. Descargar e instalar Git](#<b>1.-Descargar-e-instalar-Git</b>.)
+    - [2. Descargar e instalar NodeJS](#<b>-2.-Descargar-e-instalar-Node-JS</b>)
+    - [3. Descargar e instalar Visual Studio Code](#<b>3.-Descargar-e-instalar-Visual-Studio-Code</b>)
     
 - [Fuentes](#fuentes)
     
@@ -12,7 +16,7 @@ Descargar un pequeño proyecto web para practicar los comandos de git.
 
 ## <b>Configurar el Ambiente</b>
 
-### <b>1. Descargar e instalar Git</b>. 
+### <b>1. Descargar e instalar Git</b>.
 
 Usar el siguiente enlace de descarga según la arquitectura de tu ordenador, [32 bits](https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-32-bit.exe) o [64 bits](https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe).
 
@@ -89,7 +93,7 @@ Apretamos Siguiente.
 
 Apretamos Instalar.
 
-###  <b> 3. Descargar e instlar Visual Studio Code</b> 
+###  <b>3. Descargar e instalar Visual Studio Code</b> 
 
 Usar el siguiente enlace de descarga según la arquitectura de tu ordenador, [32 bits](https://code.visualstudio.com/docs/?dv=win32user) o [64 bits](https://code.visualstudio.com/docs/?dv=win64user).
 
@@ -113,8 +117,55 @@ Aceptamos las opciones marcadas.
 
 Presionamos instalar.
 
-2. Descargar proyecto base [link](https://download.sqlitebrowser.org/DB.Browser.for.SQLite-3.11.2-win64.zip). El zip a descargar contiene los siguientes archivos.
+## <b>Usar Github</b>
 
+### <b>1. Crear una cuenta en Github</b>.
+
+Accedemos al siguiente enlace [link](https://github.com/join?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home). Llenamos el formulario con nuestros datos personales.
+
+![img05](src/04.1-github.png)
+
+Luego hay que verificar la creación de la cuenta mediante el correo que envía Github.
+
+### <b>2. Crear un nuevo repositorio</b>.
+
+Una vez que se tenga la cuenta activa, vamos a crear un nuevo repositorio:
+
+![img05](src/04.2-github.png)
+
+Asignamos un nombre y descripción del proyecto. Además no hay que seleccionar la opción de crear archivo README.md.
+
+![img05](src/04.3-github.png)
+
+Posteriormente vamos a usar los comands de pushear un repositorio existente.
+
+![img05](src/04.4-github.png)
+
+<b>El primer comando, el git remote, la dirección debe variar en función al usuario y nombre del repositorio que han creado</b>.
+
+### <b>3. Descargar proeycto de prueba</b>.
+
+Usamos el [enlace](https://github.com/pepeul1191/manuales/raw/master/git/src/git_tuto.zip) para descargar un proyecto ya avanzado con el fin de ejecutar comandos de git sobre dicho proyecto. Una vez descargado y descomprimido el archivo zip, vamos ejecutar los comandos de <b>git remote add</b> y <b> git push</b> de la imagen anterior.
+
+Primero vamos a agregar todos los archivos descargados al commit.
+    > git add .
+
+Ejecutamos el primer commit.
+    
+    > git commit -m "commit inicial"
+
+Agregamos la ruta del proyecto remote git.
+
+    > git remote add origin https://github.com/nombre-usuario/nombre-repositorio.git
+
+Enviamos el repositorio local al remote (git push -u [nombre-remoto] [nombre-rama])
+
+    > git push -u origin master
+
+Al ejecutar el comando <b>push</b> nos 
+
+
+---
 
     $ npm runs start
 
@@ -125,5 +176,4 @@ La aplicación web estaría disponible en el puerto 9090.
 ## Fuentes:
 
 + https://github.com/StartBootstrap/startbootstrap-scrolling-nav
-
-https://github.com/pepeul1191/manuales/raw/master/git/src/git_tuto.zip
++ https://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos
