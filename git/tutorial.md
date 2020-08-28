@@ -154,6 +154,18 @@ Posteriormente vamos a usar los comands de pushear un repositorio existente.
 
 Usamos el [enlace](https://github.com/pepeul1191/manuales/raw/master/git/src/git_tuto.zip) para descargar un proyecto ya avanzado con el fin de ejecutar comandos de git sobre dicho proyecto. Una vez descargado y descomprimido el archivo zip, vamos ejecutar los comandos de <b>git remote add</b> y <b> git push</b> de la imagen anterior.
 
+Antes que todo, vamos a crear el archivo '.gitignore' en la para definir que carpetas y archivos no van a ser conciderados para controlar sus versiones:
+
+```
+/node_modules
+package-lock.json
+.DS_Store
+
+*.log
+*.gz
+*.tmp
+```
+
 Primero vamos a agregar todos los archivos descargados al commit.
     > git add .
 
