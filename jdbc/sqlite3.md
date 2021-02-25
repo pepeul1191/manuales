@@ -45,7 +45,7 @@ Nos aparacerá una ventana para crear una tabla, le damos cerrar.
 Para crear la tabla que vamos a usar en el ejercicio, hay que hacer lo siguiente (ver imagen):
 
 1) ir a la pestaña <b>Execute SQL</b>, <br>
-2) copiar el código que se encuentra en el archico </b>[demo.sql](demo.sql)</b>, <br>
+2) copiar el código que se encuentra en el archico </b>[demo.sql](https://raw.githubusercontent.com/pepeul1191/manuales/master/jdbc/resources/demo.sql)</b>, <br>
 3) ejecutar el script, <br>
 4) guardar cambios.
 
