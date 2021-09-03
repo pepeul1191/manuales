@@ -198,6 +198,45 @@ Vamos a nuestro repositorio, primero a la sección <b>Settings</b> y luego a <b>
 
 La aplicación web estaría disponible en el puerto 9090.
 
+
+---
+
+Otras funciones:
+
+Regresando a una version específica:
+
+    $ git reset --hard <version>
+
+Ver cambios en archivo:
+
+    $ git diff <ruta a archivo>
+
+Crear rama y moverse a rama creada:
+
+    $ git checkout -b <nombre de rama>
+
+Listar ramas:
+
+    $ git branch
+
+Ir a rama:
+
+    $ git checkout <nombre de rama>
+
+Mezclar con master:
+
+    $ git checkout master
+    $ git merge <nombre de rama>
+
+Pushear rama:
+
+    $ git push origin <nombre rama local>:<nombre rama remota>
+
+Crear tag:
+
+    $ git tag -a v1.4 -m "my version 1.4"
+    $ git push origin v1.4
+
 ---
 
 ## Fuentes:
