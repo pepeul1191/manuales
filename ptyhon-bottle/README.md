@@ -133,3 +133,61 @@ La vista <b>suma.tpl</b> sería la siguiente:
 </body>
 </html>
 ``` 
+
+## Pasando una lista a la vista
+
+Vamos a crear un nuevo endpoint donde vamos a tener una variable que tenga una lista la cuál será enviada a una nueva lista llamada <b>lista.tpl</b> que deberá ser creada en la carpeta de vistas.
+
+``` python
+@app.route('/lista', method='GET')
+def lista():
+  selecciones = [
+    {'id': 1, 'nombre': 'Brazil'},
+    {'id': 2, 'nombre': 'Argentina'},
+    {'id': 3, 'nombre': 'Uruguay'},
+  ]
+  locals = {'selecciones': selecciones}
+  return template('lista', locals)
+```
+
+La vista se vería de la siguiente manera:
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  % for s in selecciones:
+  <p>{{s['id']}}, {{s['nombre]}}</p>
+  % end
+</body>
+</html>
+``` 
+
+## Reutilizando código de las vistas
+
+Como podemos ver en todas las vistas tpl que hemos creado, hay código repetido en las cabeceras y pies de página. Este código puede estar en otros archivos independientes, por ejemplo vamos a copiar la cabecera en un archivo llamado <b>_header.tpl</b>.
+
+``` html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+```
+Y en nuestra última vista(<b>lista.tpl</b>) vamos a quitar la cabecera y vamos a parcharlo con el código del arhcivo <b>_header.tpl</b>
+
+``` html
+% include('_header.tpl')
+  % for s in selecciones:
+  <p>{{s['id']}}, {{s['nombre]}}</p>
+  % end
+</body>
+</html>
+```
