@@ -228,13 +228,61 @@ Una vez que ya tengamos la base de datos ubicada en esa carpeta, en un nuevo arc
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-load_dotenv()
 engine = create_engine('sqlite:///db/app.db')
 session_db = sessionmaker()
 session_db.configure(bind=engine)
+```
+
+## SELECT, INSERT, UPDATE y DELETE a una Tabla
+
+Para hacer un SELECT a una tabla, sería usando el siguiente código en python en el archivo <b>database.py</b>. Este código estaría abajo del código de la conexión porque usa instancias creadas antes en el archivo. Notece que está en una función con el fin de poderla llamar en el archivo <b>main.py</b>. La tabla a la que se está haciendo las operaciones, es la tabla <b>positions</b> que tiene dos atributos (id y name); el procedimiento sería similar en caso de tener más atributos en una tabla.
+``` python
+def get_all():
+  conn = engine.connect()
+  stmt = ("""
+    SELECT * FROM positions
+  """).format()
+  return [dict(r) for r in conn.execute(stmt)]
+  
+def create(name):
+  conn = engine.connect()
+  stmt = ("""
+    INSERT INTO positions (name) 
+      VALUES ('{}');
+  """).format(name)
+  rs = conn.execute(stmt)
+  return rs.lastrowid
+  
+ def update(id, name):
+  conn = engine.connect()
+  stmt = ("""
+    UPDATE positions SET 
+      name='{}' 
+      WHERE id={};
+  """).format(name, id)
+  rs = conn.execute(stmt)
+  return rs
+
+def delete(id):
+  conn = engine.connect()
+  stmt = ("""
+    DELETE FROM positions WHERE id={};
+  """).format(id)
+  rs = conn.execute(stmt)
+  return rs
+
+def get_by_id(id):
+  conn = engine.connect()
+  stmt = ("""
+    SELECT * FROM positions WHERE id={};
+  """).format(id)
+  return conn.execute(stmt).fetchone()
+```
+Para poder importar estas funciones desde el archivo <b>main.py</b>, hay que importar estas funciones en las primeras lineas, esto sería con el siguiente código:
+``` python
+from database import get_all, insert, update, delete, get_by_id
 ```
