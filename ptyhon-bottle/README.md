@@ -191,6 +191,9 @@ Y en nuestra última vista(<b>lista.tpl</b>) vamos a quitar la cabecera y vamos 
 </body>
 </html>
 ```
+
+## Archivos Estáticos
+
 Para poder publicar archivos estáticos en el servidor, tenemos que agregar la siguiente función de la librería <b>bottle</b> llamada <b>static_file</b>.
 
 ``` python
@@ -206,3 +209,32 @@ def send_static(filename):
 ```
 
 Todos los archivos estáticos, ya sean imágenes, archivos CSS, Javascript, entre otros, que se quieran acceder por la URL, deberán ser colocados en la carpeta <b>static</b>
+
+## Acceso de Base de Datos
+
+Para acceder a una base de datos SQLite3 necesitamos agregar una nueva dependencia en <b>requirements.txt</b>.
+
+```
+SQLAlchemy
+```
+
+Antes de agregar el código de la conexión a la base de datos, debemos de agregaar la base de datos a nuestro proyecto. Como en este caso la base de datos será SQLite3, debemos de colocar la base de datos ya creada dentro de una carpeta <b>db</b> en la raíz del proyecto. La base de datos que usaremos se encuentra en la misma carpeta que este archivo. Una vez descargada la colocamos en esa carpeta.
+
+Una vez que ya tengamos la base de datos ubicada en esa carpeta, en un nuevo archivo ubicado en la raíz llamado <b>database.py</b> vamos a crear agregar el siguiente código de conexión a la base de datos.
+
+
+``` python
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import os
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+load_dotenv()
+engine = create_engine('sqlite:///db/app.db')
+session_db = sessionmaker()
+session_db.configure(bind=engine)
+```
