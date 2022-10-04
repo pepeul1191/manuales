@@ -191,3 +191,18 @@ Y en nuestra última vista(<b>lista.tpl</b>) vamos a quitar la cabecera y vamos 
 </body>
 </html>
 ```
+Para poder publicar archivos estáticos en el servidor, tenemos que agregar la siguiente función de la librería <b>bottle</b> llamada <b>static_file</b>.
+
+``` python
+from bottle import Bottle, run, template, request, static_file
+```
+
+Ahora vamos a crear una carpeta en la raiz del proyecto llamada <b>static</b> y vamos a agregar este endpoint a nuestro servidor.
+
+``` python
+@app.route('/:filename#.*#')
+def send_static(filename):
+  return static_file(filename, root='./static')
+```
+
+Todos los archivos estáticos, ya sean imágenes, archivos CSS, Javascript, entre otros, que se quieran acceder por la URL, deberán ser colocados en la carpeta <b>static</b>
