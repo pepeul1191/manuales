@@ -210,6 +210,47 @@ def send_static(filename):
 
 Todos los archivos estáticos, ya sean imágenes, archivos CSS, Javascript, entre otros, que se quieran acceder por la URL, deberán ser colocados en la carpeta <b>static</b>
 
+## Formularios
+
+Para enviar datos desde una vista al servidor, hay que usar formularios HTML, los cuales envían los datos contenidos usando dos parámetros, el método HTTP y la ruta. Ambos parámetros deben de existir como una ruta HTTP asosiada a una función de endpoint en el servidor. Adicionalmente, los datos del formulario a ser enviados tienen asociados a los valores una llave, los que deberán ser recepcionados dentro de la función endpoint por las llaves.
+
+A continuación se coloca un ejemplo de un formulario de ejemplo de un formulario HTML.
+
+``` html
+<form action="/save" method="post">
+    <input type="hidden" name="id" value="1"><br>
+    <label for="name">Nombres:</label><br>
+    <input type="text" id="names" name="names" value=""><br>
+    <label for="name">Apellidos:</label><br>
+    <input type="text" id="last_names" name="last_names" value=""><br>
+    <label for="name">Correo:</label><br>
+    <input type="text" id="email" name="email" value=""><br>
+    <label for="name">Teléfono:</label><br>
+    <input type="text" id="phone" name="phone" value=""><br>
+    <label for="position_id">Tipo de Empleado:</label><br>
+    <select name="position_id" id="position_id">
+        <option value="1">Jefe de Prácticas</option>
+        <option value="2">Administrativo</option>
+        <option value="3">Profesor</option>
+    </select>
+    <br><br>
+    <button class="btn">Guardar Cambios</button>
+  </form>
+```
+En el servidor, la función de endpoint, para poder recepcionar los datos enviados desde el formulario tendríamos que escribir el siguiente código:
+
+``` python
+@app.route('/save', method='POST')
+def save():
+  request.forms.get('names')
+  request.forms.get('last_names')
+  request.forms.get('phone')
+  request.forms.get('email')
+  request.forms.get('position_id')
+  return ':)'
+```
+Notece que la ruta <b>save</b> coincide con la ruta del <b>action</b> de la etiqueta <b>form</b> y el método con el atributo <b>method</b>. Además todos las llaves de los elementos del formulario a enviar son los atributos <b>name</b> del formulario.
+
 ## Acceso de Base de Datos
 
 Para acceder a una base de datos SQLite3 necesitamos agregar una nueva dependencia en <b>requirements.txt</b>.
